@@ -3,9 +3,10 @@ import 'package:brightness/core/constant/app_strings.dart';
 import 'package:brightness/views/screens/login_and_signup/Login.dart';
 import 'package:brightness/views/widgets/get_started/custom_button.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 
 import '../../shared/backgroung_image.dart';
+import 'first_signup.dart';
 
 class WelcomeView extends StatelessWidget {
   const WelcomeView({super.key});
@@ -57,7 +58,7 @@ class WelcomeView extends StatelessWidget {
                     function: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                        return LoginView();
+                        return FirstSignupView();
                       }));
                     },
                   ),

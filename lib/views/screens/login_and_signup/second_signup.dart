@@ -8,8 +8,8 @@ import '../../shared/backgroung_image.dart';
 import '../../shared/custom_textfield.dart';
 import '../../widgets/get_started/custom_button.dart';
 
-class LoginView extends StatelessWidget {
-  TextController _textController = Get.put(TextController());
+class SecondSignupView extends StatelessWidget {
+  final TextController _textController = Get.put(TextController());
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class LoginView extends StatelessWidget {
             ),
             Center(
               child: Text(
-                'login',
+                'Sign up',
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 80,
@@ -42,30 +42,45 @@ class LoginView extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 65),
               child: Column(
                 children: [
-              
                   CustomTextField(
-                    controller: _textController.loginEmail,
-                    hintText: "Email",
+                    controller: _textController.signupNumber,
+                    hintText: "Phone Number",
+                    keyboardType: TextInputType.number,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  CustomTextField(
+                    controller: _textController.signupAddress,
+                    hintText: "Address",
                     keyboardType: TextInputType.name,
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   CustomTextField(
-                    controller: _textController.loginPassword,
-                    hintText: "Password",
+                    controller: _textController.signupBirthday,
+                    hintText: "Birthday",
                     keyboardType: TextInputType.name,
                   ),
-                   const SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   CustomButton(
-                    txt: 'Login',
+                    txt: 'Sign up',
                     function: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return LoginView();
-                      }));
+                      if (_textController.signupBirthday.text.isEmpty ||
+                          _textController.signupAddress.text.isEmpty ||
+                          _textController.signupNumber.text.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text("Please fill all fields")));
+                      } else {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return SecondSignupView();
+                        }));
+                      }
                     },
                   ),
                   const SizedBox(
