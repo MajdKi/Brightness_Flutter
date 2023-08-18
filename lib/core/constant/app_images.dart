@@ -5,4 +5,8 @@ class AppImages {
   static const String secondGetStarted= root + 'second_get_started.jpg';
   static const String welcome= root + 'welcome.jpg';
   static const String loginAndSignup= root + 'login_and_signup.jpg';
+  static const String personPlaceHolder = root + 'person_palce_holder.jpg';
+  static const String postsBackroung = root + 'posts_background.jpg';
+  static const String userProfile = root + 'user_profile.jpg';
+  static const String bookings = root + 'bookings.jpg';
 }

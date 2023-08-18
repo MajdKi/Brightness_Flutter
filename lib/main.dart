@@ -1,4 +1,5 @@
 import 'package:brightness/views/screens/Get_started/get_started.dart';
+import 'package:brightness/views/screens/main_screens/posts.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
@@ -149,6 +150,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return WelcomeView();
+    return Posts();
   }
 }
