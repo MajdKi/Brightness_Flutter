@@ -9,4 +9,5 @@ class AppImages {
   static const String postsBackroung = root + 'posts_background.jpg';
   static const String userProfile = root + 'user_profile.jpg';
   static const String bookings = root + 'bookings.jpg';
+  static const String bookBackground = root + 'book_background.jpg';
 }
