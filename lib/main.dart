@@ -15,6 +15,7 @@ import 'views/screens/login_and_signup/welcome.dart';
 import 'views/screens/main_screens/main_screens.dart';
 import 'views/screens/main_screens/profile.dart';
 import 'views/screens/secondry_screens/complaint.dart';
+import 'views/screens/secondry_screens/rate_app.dart';
 import 'views/screens/secondry_screens/rate_photographer.dart';
 import 'views/screens/splash_screen.dart/splash_screen.dart';
 
@@ -156,8 +157,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return RatePhotographer(
-        ratePhotographerModel: RatePhotographerModel(
-            image: AppImages.personPlaceHolder, name: 'Majd Kikhia'));
+    return RateApp();
   }
 }
