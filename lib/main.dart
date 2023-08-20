@@ -10,6 +10,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import 'views/screens/login_and_signup/welcome.dart';
+import 'views/screens/main_screens/main_screens.dart';
+import 'views/screens/main_screens/profile.dart';
 import 'views/screens/splash_screen.dart/splash_screen.dart';
 
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -150,6 +152,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Posts();
+    return Profile();
   }
 }
