@@ -3,5 +3,6 @@ class Host{
   static const String getPremium = host+"Photographer/Premium/";
   static const String getPosts = host+"post";
   static const String getBookings = host+"User/GetBookings/1";
+  static const String getPhotographers = host+"Photographer";
 
 }

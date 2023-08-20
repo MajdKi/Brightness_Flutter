@@ -13,6 +13,7 @@ class TextController extends GetxController {
   final TextEditingController updateInProfile = TextEditingController();
   final TextEditingController problemTitle = TextEditingController();
   final TextEditingController problemDescription = TextEditingController();
+  final TextEditingController search = TextEditingController();
 
   @override
   void onClose() {
@@ -27,6 +28,7 @@ class TextController extends GetxController {
     updateInProfile.dispose();
     problemTitle.dispose();
     problemDescription.dispose();
+    search.dispose();
     super.onClose();
   }
 }
