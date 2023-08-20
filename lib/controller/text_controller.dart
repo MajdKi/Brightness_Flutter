@@ -11,7 +11,8 @@ class TextController extends GetxController {
   final TextEditingController signupAddress = TextEditingController();
   final TextEditingController signupBirthday = TextEditingController();
   final TextEditingController updateInProfile = TextEditingController();
-
+  final TextEditingController problemTitle = TextEditingController();
+  final TextEditingController problemDescription = TextEditingController();
 
   @override
   void onClose() {
@@ -24,6 +25,8 @@ class TextController extends GetxController {
     signupAddress.dispose();
     signupBirthday.dispose();
     updateInProfile.dispose();
+    problemTitle.dispose();
+    problemDescription.dispose();
     super.onClose();
   }
 }
