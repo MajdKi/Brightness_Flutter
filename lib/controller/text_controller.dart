@@ -14,6 +14,9 @@ class TextController extends GetxController {
   final TextEditingController problemTitle = TextEditingController();
   final TextEditingController problemDescription = TextEditingController();
   final TextEditingController search = TextEditingController();
+  final TextEditingController placeForBook = TextEditingController();
+  final TextEditingController dateForBook = TextEditingController();
+  
 
   @override
   void onClose() {

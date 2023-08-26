@@ -44,6 +44,7 @@ class FirstSignupView extends StatelessWidget {
               child: Column(
                 children: [
                   CustomTextField(
+                    obscureText: false,
                     controller: _textController.signupName,
                     hintText: "Name",
                     keyboardType: TextInputType.name,
@@ -52,6 +53,7 @@ class FirstSignupView extends StatelessWidget {
                     height: 10,
                   ),
                   CustomTextField(
+                    obscureText: false,
                     controller: _textController.signupEmail,
                     hintText: "Email",
                     keyboardType: TextInputType.name,
@@ -60,6 +62,7 @@ class FirstSignupView extends StatelessWidget {
                     height: 10,
                   ),
                   CustomTextField(
+                    obscureText: true,
                     controller: _textController.signupPassword,
                     hintText: "Password",
                     keyboardType: TextInputType.name,

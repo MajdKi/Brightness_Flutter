@@ -1,16 +1,23 @@
+import 'package:brightness/core/constant/app_images.dart';
 import 'package:brightness/views/screens/Get_started/get_started.dart';
+import 'package:brightness/views/screens/login_and_signup/login.dart';
 import 'package:brightness/views/screens/main_screens/posts.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'data/models/book_page_model.dart';
+import 'data/models/photographer_page_model.dart';
 import 'firebase_options.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import 'views/screens/login_and_signup/welcome.dart';
+import 'views/screens/main_screens/book.dart';
 import 'views/screens/main_screens/main_screens.dart';
+import 'views/screens/main_screens/photographer_profile.dart';
 import 'views/screens/main_screens/profile.dart';
 import 'views/screens/main_screens/search.dart';
 import 'views/screens/secondry_screens/complaint.dart';
@@ -27,11 +34,16 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
 
-  runApp(const MyApp());
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool isFirstTime = prefs.getBool('isFirstTime') ?? true;
+
+  runApp( MyApp(isFirstTime: isFirstTime));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  
+   MyApp({required this.isFirstTime});
+     bool isFirstTime;
 
   // This widget is the root of your application.
   @override
@@ -55,19 +67,23 @@ class MyApp extends StatelessWidget {
                 // is not restarted.
                 primarySwatch: Colors.blue,
               ),
-              home: const MyHomePage(),
+              home:  MyHomePage(isFirstTime:isFirstTime ,),
             ));
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+   MyHomePage({super.key,required this.isFirstTime});
+
+   bool isFirstTime;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState(isFirstTime: isFirstTime);
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+_MyHomePageState({required this.isFirstTime});
+   bool isFirstTime;
   FirebaseMessaging messaging = FirebaseMessaging.instance;
   void subscribeToBroadcastTopic() {
     messaging.subscribeToTopic('broadcast');
@@ -152,8 +168,10 @@ class _MyHomePageState extends State<MyHomePage> {
         ?.createNotificationChannel(channel);
   }
 
+
+
   @override
   Widget build(BuildContext context) {
-    return Search();
+    return WelcomeView();
   }
 }

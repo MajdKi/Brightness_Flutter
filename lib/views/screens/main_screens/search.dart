@@ -1,6 +1,7 @@
 import 'package:brightness/controller/text_controller.dart';
 import 'package:brightness/core/constant/app_colors.dart';
 import 'package:brightness/core/constant/app_images.dart';
+import 'package:brightness/views/screens/main_screens/photographer_profile.dart';
 import 'package:brightness/views/shared/custom_textfield.dart';
 import 'package:brightness/views/widgets/get_started/custom_button.dart';
 import 'package:brightness/views/widgets/search_page/photographer_card.dart';
@@ -9,6 +10,7 @@ import 'package:get/get.dart';
 
 import '../../../data/datasource/remote/get_photographers.dart';
 import '../../../data/models/photographer_card_model.dart';
+import '../../../data/models/photographer_page_model.dart';
 import '../../shared/backgroung_image.dart';
 
 class Search extends StatelessWidget {
@@ -36,6 +38,7 @@ class Search extends StatelessWidget {
                     Expanded(
                         flex: 3,
                         child: CustomTextField(
+                          obscureText: false,
                             controller: textController.search,
                             hintText: 'Name',
                             keyboardType: TextInputType.name)),
@@ -76,23 +79,58 @@ class Search extends StatelessWidget {
                           return ListView.builder(
                               itemCount: snapshot.data['data'].length,
                               itemBuilder: (context, index) {
-                                return Container(
-                                  margin: const EdgeInsets.symmetric(
-                                      horizontal: 50),
-                                  child: PhotographerCard(
-                                    photographerCardModel:
-                                        PhotographerCardModel(
-                                      image: snapshot.data['data'][index]
-                                          ['image'],
-                                      name: snapshot.data['data'][index]['name']
-                                          .toString(),
-                                      place: snapshot.data['data'][index]
-                                              ['adress']
-                                          .toString(),
-                                      rate: snapshot.data['data'][index]['rate']
-                                          .toString(),
+                                return Column(
+                                  children: [
+                                    InkWell(
+                                      child: Container(
+                                        margin: const EdgeInsets.symmetric(
+                                            horizontal: 50),
+                                        child: PhotographerCard(
+                                          photographerCardModel:
+                                              PhotographerCardModel(
+                                            image: snapshot.data['data'][index]
+                                                ['image'],
+                                            name: snapshot.data['data'][index]
+                                                    ['name']
+                                                .toString(),
+                                            place: snapshot.data['data'][index]
+                                                    ['adress']
+                                                .toString(),
+                                            rate: snapshot.data['data'][index]
+                                                    ['rate']
+                                                .toString(),
+                                          ),
+                                        ),
+                                      ),
+                                      onTap: () {
+                                        Navigator.push(context,
+                                            MaterialPageRoute(
+                                                builder: (context) {
+                                          return PhotographerProfile(
+                                              photographerPageModel:
+                                                  PhotographerPageModel(
+                                            image: snapshot.data['data'][index]
+                                                ['image'],
+                                            name: snapshot.data['data'][index]
+                                                    ['name']
+                                                .toString(),
+                                            bio: snapshot.data['data'][index]
+                                                    ['bio']
+                                                .toString(),
+                                                rate:  snapshot.data['data'][index]
+                                                    ['rate']
+                                                .toString(),
+                                                isFavourit: true,
+                                                photographerId: snapshot.data['data'][index]
+                                                    ['id']
+                                          ));
+                                        }));
+                                      },
                                     ),
-                                  ),
+                                    const SizedBox(
+                                      height: 10,
+                                    )
+                                  ],
                                 );
                               });
                         } else {

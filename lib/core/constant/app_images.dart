@@ -10,4 +10,5 @@ class AppImages {
   static const String userProfile = root + 'user_profile.jpg';
   static const String bookings = root + 'bookings.jpg';
   static const String bookBackground = root + 'book_background.jpg';
+  static const String photographerProfileBackground = root + 'photographer_profile.jpg';
 }

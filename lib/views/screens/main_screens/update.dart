@@ -48,6 +48,7 @@ class Update extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 50),
                     child: CustomTextField(
+                      obscureText: false,
                         controller: textController.updateInProfile,
                         keyboardType: TextInputType.name,
                         hintText: 'New ' + status),

@@ -1,3 +1,4 @@
+import 'package:brightness/views/screens/main_screens/main_screens.dart';
 import 'package:brightness/views/shared/custom_textfield.dart';
 import 'package:brightness/views/widgets/get_started/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,7 @@ import 'package:get/get.dart';
 
 import '../../../controller/text_controller.dart';
 import '../../../core/constant/app_images.dart';
+import '../../../data/datasource/remote/add_comp.dart';
 import '../../shared/backgroung_image.dart';
 
 class Complaint extends StatelessWidget {
@@ -54,6 +56,7 @@ class Complaint extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 50),
                   child: CustomTextField(
+                      obscureText: false,
                       controller: textController.problemTitle,
                       hintText: 'Problem Title',
                       keyboardType: TextInputType.none),
@@ -100,7 +103,29 @@ class Complaint extends StatelessWidget {
                 ),
                 Container(
                     margin: const EdgeInsets.symmetric(horizontal: 50),
-                    child: CustomButton(txt: 'Send', function: () {}))
+                    child: CustomButton(
+                        txt: 'Send',
+                        function: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return Scaffold(
+                              body: FutureBuilder(
+                                  future: addComp(),
+                                  builder: (context,
+                                      AsyncSnapshot<dynamic> snapshot) {
+                                    if (snapshot.hasData &&
+                                        snapshot.connectionState ==
+                                            ConnectionState.done) {
+                                      return MainScreens();
+                                    } else {
+                                      return const Center(
+                                        child: CircularProgressIndicator(),
+                                      );
+                                    }
+                                  }),
+                            );
+                          }));
+                        }))
               ],
             ),
           )

@@ -9,17 +9,20 @@ class CustomTextField extends StatelessWidget {
   TextEditingController controller;
   String hintText;
   TextInputType keyboardType;
+  bool obscureText;
   CustomTextField(
       {super.key,
       required this.controller,
       required this.hintText,
-      required this.keyboardType});
+      required this.keyboardType,
+      required this.obscureText});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
       keyboardType: keyboardType,
+      obscureText: obscureText,
       style: const TextStyle(color: Colors.black),
       decoration: InputDecoration(
           filled: true,

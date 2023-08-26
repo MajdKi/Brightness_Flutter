@@ -83,7 +83,7 @@ class PhotographerCard extends StatelessWidget {
                 width: 2,
               ),
               Text(
-                photographerCardModel.place,
+                photographerCardModel.rate,
                 style: const TextStyle(
                     color: Colors.white,
                     fontSize: 30,

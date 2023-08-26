@@ -32,7 +32,7 @@ class _MainScreensState extends State<MainScreens> {
                         topRight: Radius.circular(20))),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children:  [
+                  children: [
                     InkWell(
                       child: const Icon(
                         Icons.home,
@@ -45,25 +45,52 @@ class _MainScreensState extends State<MainScreens> {
                         });
                       },
                     ),
-                    Icon(
-                      Icons.person,
-                      color: Colors.black,
-                      size: 35,
+                    InkWell(
+                      child: Icon(
+                        Icons.person,
+                        color: Colors.black,
+                        size: 35,
+                      ),
+                      onTap: () {
+                        setState(() {
+                          body = setMainPage(1);
+                        });
+                      },
                     ),
-                    Icon(
-                      Icons.search,
-                      color: Colors.black,
-                      size: 35,
+                    InkWell(
+                        child: Icon(
+                          Icons.search,
+                          color: Colors.black,
+                          size: 35,
+                        ),
+                        onTap: () {
+                          setState(() {
+                            body = setMainPage(2);
+                          });
+                        }),
+                    InkWell(
+                      child: Icon(
+                        Icons.favorite,
+                        color: Colors.black,
+                        size: 35,
+                      ),
+                      onTap: () {
+                        setState(() {
+                          body = setMainPage(3);
+                        });
+                      },
                     ),
-                    Icon(
-                      Icons.favorite,
-                      color: Colors.black,
-                      size: 35,
-                    ),
-                    Icon(
-                      Icons.book,
-                      color: Colors.black,
-                      size: 35,
+                    InkWell(
+                      child: Icon(
+                        Icons.book,
+                        color: Colors.black,
+                        size: 35,
+                      ),
+                      onTap: () {
+                        setState(() {
+                          body = setMainPage(4);
+                        });
+                      },
                     ),
                   ],
                 ),
